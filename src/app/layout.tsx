@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Niculin",
-  description: "Niculin KI Assistent",
+  description: "Niculin - KI Assistent",
 };
 
 export default function RootLayout({
