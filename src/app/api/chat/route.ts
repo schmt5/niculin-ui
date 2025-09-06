@@ -1,16 +1,30 @@
 import { openai } from "@ai-sdk/openai";
-import { streamText, UIMessage, convertToModelMessages } from "ai";
+import { generateText, UIMessage, convertToModelMessages } from "ai";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
+  console.log(messages[0].parts);
 
-  const result = streamText({
+  const userPrompt = messages
+    .at(-1)
+    ?.parts?.map((part) => part.text)
+    .join(" ");
+  console.log(userPrompt);
+
+  const { text } = await generateText({
     model: openai("gpt-4o"),
-    messages: convertToModelMessages(messages),
+    prompt: "hi my name is tiri",
   });
 
-  return result.toUIMessageStreamResponse();
+  console.log(text);
+
+  const newMessages = [
+    ...messages,
+    { id: crypto.randomUUID(), role: "assistant", content: text },
+  ];
+
+  return Response.json({ message: newMessages });
 }
