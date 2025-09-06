@@ -4,7 +4,6 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { continueConversation, Message } from "./actions";
 import { MessageItem } from "./ui/MessageItem";
 import { SubmitButton } from "./ui/SubmitButton";
-import { Avatar } from "./ui/Avatar";
 import { LoadingAvatar } from "./ui/LoadingAvatar";
 
 export default function Chat() {
@@ -54,7 +53,7 @@ export default function Chat() {
   }, [conversation]);
 
   return (
-    <div className="w-full h-[460px] max-w-lg mx-auto border relative">
+    <div className="w-full h-[460px] max-w-lg mx-auto relative border border-stone-300">
       <div className="h-full flex flex-col bg-ni-50/75">
         <div className="w-full flex-1 overflow-y-auto">
           {conversation.map((message) => (
@@ -65,7 +64,7 @@ export default function Chat() {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="items-end w-full bg-white rounded-t-3xl p-2 border border-stone-300 border-b-0">
+        <div className="items-end w-full bg-white px-2 py-4 border border-stone-300 border-b-0 rounded-t-3xl">
           <form className="w-full relative" onSubmit={onSubmit}>
             <textarea
               id="message-input"
@@ -73,7 +72,7 @@ export default function Chat() {
               className="flex w-full pl-3 pr-12 outline-none py-2 read-only:opacity-50 overflow-hidden resize-none rounded-md text-base"
               value={input}
               placeholder="Frage etwas..."
-              rows={2}
+              rows={1}
               onChange={(e) => setInput(e.currentTarget.value)}
               onKeyDown={onKeyDown}
             />
