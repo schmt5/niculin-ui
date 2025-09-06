@@ -64,7 +64,7 @@ export default function Chat() {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="items-end w-full bg-white px-2 py-4 border border-stone-300 border-b-0 rounded-t-3xl">
+        <div className="items-end w-full bg-white px-2 pt-4 border border-stone-300 border-b-0 rounded-t-3xl">
           <form className="w-full relative" onSubmit={onSubmit}>
             <textarea
               id="message-input"
@@ -79,6 +79,9 @@ export default function Chat() {
 
             <SubmitButton loading={loading} />
           </form>
+          <span className="inline-block w-full text-end px-2 pb-1 text-xs italic text-stone-500">
+            Niculin kann Fehler machen
+          </span>
         </div>
       </div>
     </div>
