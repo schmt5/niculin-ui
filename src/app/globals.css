@@ -3,6 +3,7 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --accent: #015a9d;
 }
 
 @theme inline {
@@ -16,7 +17,7 @@
     --color-ni-200: oklch(0.9507 0.0107 100.83);
     --color-ni-500: oklch(0.6726 0.1405 36.13);
     --color-ni-600: oklch(0.6078 0.1379 39.01);
-    --color-accent: oklch(46% 0.1301 250.18);
+    --color-accent: var(--accent);
 }
 
 @media (prefers-color-scheme: dark) {

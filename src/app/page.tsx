@@ -7,6 +7,9 @@ import { SubmitButton } from "./ui/SubmitButton";
 import { LoadingAvatar } from "./ui/LoadingAvatar";
 
 export default function Chat() {
+  const accentColorCode = process.env.NEXT_PUBLIC_ACCENT_COLOR || "015a9d";
+  const accentColor = `#${accentColorCode}`;
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [conversation, setConversation] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -51,6 +54,10 @@ export default function Chat() {
   useEffect(() => {
     scrollToBottom();
   }, [conversation]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--accent", accentColor);
+  }, [accentColor]);
 
   return (
     <div className="hidden xs:block w-full h-[480px] max-w-lg relative border border-stone-300">
