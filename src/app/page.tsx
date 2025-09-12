@@ -53,7 +53,7 @@ export default function Chat() {
   }, [conversation]);
 
   return (
-    <div className="hidden xs:block w-full h-[460px] max-w-lg relative border border-stone-300">
+    <div className="hidden xs:block w-full h-[480px] max-w-lg relative border border-stone-300">
       <div className="h-full flex flex-col bg-ni-50/75">
         <div className="w-full flex-1 overflow-y-auto">
           {conversation.map((message) => (
