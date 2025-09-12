@@ -54,7 +54,7 @@ function SubmitButtonComponent({ loading }: SubmitButtonProps) {
     <button
       type="submit"
       disabled={loading}
-      className="bg-ni-600 inline-flex items-center justify-center whitespace-nowrap font-medium disabled:pointer-events-none disabled:opacity-50 rounded-full p-[7px] h-fit absolute bottom-1/2 translate-y-1/2 right-2 text-white"
+      className="bg-accent inline-flex items-center justify-center whitespace-nowrap font-medium disabled:pointer-events-none disabled:opacity-50 rounded-full p-[7px] h-fit absolute bottom-1/2 translate-y-1/2 right-2 text-white"
     >
       <span className="sr-only">Nachricht senden</span>
       {icon}

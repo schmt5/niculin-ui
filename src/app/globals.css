@@ -10,11 +10,13 @@
     --color-foreground: var(--foreground);
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
+    --breakpoint-xs: 320px;
     --color-ni-50: oklch(0.9818 0.0054 95.1);
     --color-ni-100: oklch(0.966 0.0093 99.98);
     --color-ni-200: oklch(0.9507 0.0107 100.83);
     --color-ni-500: oklch(0.6726 0.1405 36.13);
     --color-ni-600: oklch(0.6078 0.1379 39.01);
+    --color-accent: oklch(46% 0.1301 250.18);
 }
 
 @media (prefers-color-scheme: dark) {
