@@ -47,12 +47,12 @@ export async function initSession(data = {}) {
     });
 
     if (!response.ok) {
-      throw new Error(`Session init failed: ${response.status}`);
+      throw new Error();
     }
 
     const result = await response.json();
     return { success: true, data: result };
-  } catch (error) {
-    throw new Error(error?.message);
+  } catch (_error) {
+    throw new Error("Session init failed");
   }
 }
