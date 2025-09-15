@@ -29,3 +29,30 @@ export async function continueConversation(history: Message[]) {
     ],
   };
 }
+
+export async function initSession(data = {}) {
+  try {
+    const sessionData = {
+      timestamp: new Date().toISOString(),
+      sessionId: crypto.randomUUID(),
+      ...data,
+    };
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sessionData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Session init failed: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return { success: true, data: result };
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}

@@ -6,6 +6,7 @@ import { MessageItem } from "./MessageItem";
 import { SubmitButton } from "./SubmitButton";
 import { LoadingAvatar } from "./LoadingAvatar";
 import { useConversation } from "../hooks/useConversation";
+import { useInitSession } from "../hooks/useInitSession";
 
 export function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -13,6 +14,9 @@ export function Chat() {
   const [loading, setLoading] = useState(false);
 
   const [conversation, setConversation] = useConversation();
+  const [sessionId] = useInitSession();
+  const sessionIdString =
+    typeof sessionId === "string" ? `${sessionId.substring(0, 5)}, ` : "";
 
   const onSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,7 +85,8 @@ export function Chat() {
           <SubmitButton loading={loading} />
         </form>
         <span className="inline-block w-full text-end px-2 pb-1 text-xs italic text-stone-500">
-          Niculin kann Fehler machen
+          <span>{sessionIdString}</span>
+          <span>Niculin kann Fehler machen</span>
         </span>
       </div>
     </div>
