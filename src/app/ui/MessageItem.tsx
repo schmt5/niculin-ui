@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Message } from "../actions";
 import { Avatar } from "./Avatar";
+import { MessageContentTriage } from "./MessageContentTriage";
 
 interface MessageItemProps {
   message: Message;
@@ -20,7 +21,7 @@ function MessageItemComponent({ message }: MessageItemProps) {
       <div className="shrink-0 mb-2">
         <Avatar />
       </div>
-      <div className="whitespace-pre-wrap">{message.content}</div>
+      <MessageContentTriage content={message.content} />
     </div>
   );
 }
