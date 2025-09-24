@@ -10,7 +10,7 @@ function MessageContentTriageComponent({ content }: { content: string }) {
       <div>
         <div className="whitespace-pre-wrap">{data.intro}</div>
         <div className="flex flex-col gap-4 my-4">
-          {data.options.map((option: any) => (
+          {data.options.map((option) => (
             <OptionCard key={option.option_id} option={option} />
           ))}
         </div>

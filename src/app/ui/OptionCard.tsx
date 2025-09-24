@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 
-function OptionCardComponent({ option }: { option: any }) {
+function OptionCardComponent({ option }: { option }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
