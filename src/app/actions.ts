@@ -31,15 +31,9 @@ export interface Message {
 export async function continueConversation(history: Message[]) {
   "use server";
 
-  const { text } = await generateText({
-    model: openai("gpt-3.5-turbo"),
-    system: "You are a friendly assistant!",
-    messages: history,
-  });
-
   // TODO: Remove this dummy data later
   const lastMessage = history[history.length - 1];
-  if (lastMessage.content === "hotels") {
+  if (lastMessage.content.includes("hotels")) {
     return {
       messages: [
         ...history,
@@ -51,6 +45,12 @@ export async function continueConversation(history: Message[]) {
       ],
     };
   }
+
+  const { text } = await generateText({
+    model: openai("gpt-3.5-turbo"),
+    system: "You are a friendly assistant!",
+    messages: history,
+  });
 
   return {
     messages: [
