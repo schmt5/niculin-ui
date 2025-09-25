@@ -2,6 +2,7 @@
 
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { Message } from "./types";
 
 const dummyHotelData = {
   type: "complex",
@@ -21,12 +22,6 @@ const dummyHotelData = {
   outro:
     "Die Preise pro Zimmer/Nacht beginnen ab CHF 315 (Comfort) bis CHF 580 (Alpine Junior Suite). Möchtest du eine dieser Zimmerkategorien oder eines der verfügbaren Packages buchen?",
 };
-
-export interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-}
 
 export async function continueConversation(history: Message[]) {
   "use server";

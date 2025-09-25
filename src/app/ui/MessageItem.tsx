@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { Message } from "../actions";
 import { Avatar } from "./Avatar";
 import { MessageContentTriage } from "./MessageContentTriage";
+import { Message } from "../types";
 
 interface MessageItemProps {
   message: Message;

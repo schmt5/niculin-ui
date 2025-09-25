@@ -1,5 +1,5 @@
 import { useSessionStorage } from "usehooks-ts";
-import { Message } from "../actions";
+import { Message } from "../types";
 
 export function useConversation() {
   const [value, setValue] = useSessionStorage<Message[]>(
