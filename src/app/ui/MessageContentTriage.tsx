@@ -1,26 +1,40 @@
 import { memo } from "react";
 import { OptionCard } from "./OptionCard";
+import { parseApiResponse } from "../utils/parseApiResponse";
 
 function MessageContentTriageComponent({ content }: { content: string }) {
-  const data = JSON.parse(content);
-  console.log(data);
+  const data = parseApiResponse(content);
 
-  if (data.type === "complex") {
+  if (data.type === "json") {
     return (
       <div>
-        <div className="whitespace-pre-wrap">{data.intro}</div>
+        <div
+          className="whitespace-pre-wrap"
+          dangerouslySetInnerHTML={{ __html: data.htmlBefore }}
+        ></div>
         <div className="flex flex-col gap-4 my-4">
-          {data.options.map((option) => (
+          {data.json.options?.map((option) => (
             <OptionCard key={option.option_id} option={option} />
           ))}
         </div>
-        <div className="whitespace-pre-wrap">{data.outro}</div>
-        <p>{data.content}</p>
+        <div
+          className="whitespace-pre-wrap"
+          dangerouslySetInnerHTML={{ __html: data.htmlAfter }}
+        ></div>
       </div>
     );
   }
 
-  return <div className="whitespace-pre-wrap">{data}</div>;
+  if (data.type === "text") {
+    return (
+      <div
+        className="whitespace-pre-wrap"
+        dangerouslySetInnerHTML={{ __html: data.htmlBefore }}
+      ></div>
+    );
+  }
+
+  return null;
 }
 
 export const MessageContentTriage = memo(MessageContentTriageComponent);

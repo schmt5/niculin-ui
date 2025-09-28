@@ -6,6 +6,17 @@ interface LoadingAvatarProps {
 }
 
 function LoadingAvatarComponent({ onMount }: LoadingAvatarProps) {
+  const spinnerMessages = [
+    "🧠 Searching for best topic...",
+    "⌛ Best topic found...",
+    "📚 Searching memory...",
+    "🚫📁 Nothing found...",
+    "🌐🔍 Searching internet...",
+    "✍️ Results obtained from the internet...",
+    "✍️ Analysing internet results...",
+    "✍️🤔 Integrating results in answer...",
+  ];
+
   useEffect(() => {
     onMount();
   }, [onMount]);

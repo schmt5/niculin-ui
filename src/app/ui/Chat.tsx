@@ -7,6 +7,7 @@ import { SubmitButton } from "./SubmitButton";
 import { LoadingAvatar } from "./LoadingAvatar";
 import { useConversation } from "../hooks/useConversation";
 import { useInitSession } from "../hooks/useInitSession";
+import { parseApiResponse, dummyResponse } from "../utils/parseApiResponse";
 
 export function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -54,12 +55,18 @@ export function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  const handleResponse = () => {
+    const response = parseApiResponse(dummyResponse);
+    console.log(response);
+  };
+
   useEffect(() => {
     scrollToBottom();
   }, [conversation]);
 
   return (
     <div className="h-full flex flex-col bg-ni-50/75">
+      <button onClick={handleResponse}>Test Response</button>
       <div className="w-full flex-1 overflow-y-auto">
         {conversation.map((message) => (
           <MessageItem key={message.id} message={message} />
