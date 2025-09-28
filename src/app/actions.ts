@@ -4,13 +4,15 @@ import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { Message } from "./types";
 import { dummyResponse } from "./utils/parseApiResponse";
+import { sleep } from "./utils/sleep";
 
 export async function continueConversation(history: Message[]) {
   "use server";
 
   // TODO: Remove this dummy data later
   const lastMessage = history[history.length - 1];
-  if (lastMessage.content.includes("hotels")) {
+  if (lastMessage.content.includes("activities")) {
+    await sleep(1000);
     return {
       messages: [
         ...history,
