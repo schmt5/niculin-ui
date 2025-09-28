@@ -13,6 +13,7 @@ export async function continueConversation(history: Message[]) {
   const lastMessage = history[history.length - 1];
   if (lastMessage.content.includes("activities")) {
     await sleep(1000);
+
     return {
       messages: [
         ...history,
