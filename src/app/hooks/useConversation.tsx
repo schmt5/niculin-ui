@@ -1,3 +1,5 @@
+"use client";
+
 import { useSessionStorage } from "usehooks-ts";
 import { Message } from "../types";
 

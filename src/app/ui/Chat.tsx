@@ -8,8 +8,16 @@ import { LoadingAvatar } from "./LoadingAvatar";
 import { useConversation } from "../hooks/useConversation";
 import { useInitSession } from "../hooks/useInitSession";
 import { parseApiResponse, dummyResponse } from "../utils/parseApiResponse";
+import { getDateTime } from "../utils/getDateTime";
 
 export function Chat() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const version = urlParams.get("version")
+    ? `Version: ${urlParams.get("version")}`
+    : "";
+
+  const now = getDateTime();
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -62,6 +70,10 @@ export function Chat() {
   return (
     <div className="h-full flex flex-col bg-ni-50/75">
       <div className="w-full flex-1 overflow-y-auto">
+        <div className="flex flex-col items-center text-gray-500">
+          <span className="text-sm">{version}</span>
+          <span className="text-sm">{now}</span>
+        </div>
         {conversation.map((message) => (
           <MessageItem key={message.id} message={message} />
         ))}
