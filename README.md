@@ -62,7 +62,8 @@ npm run start
   - Categories (families, mountains, water, air activities)
 
 ### URL Parameters
-- `?version=X.X.X` - Display version information in the chat header
+- `?lang=en` - Set the language code
+- `?version=beta` - Display version information in the chat header
 
 ## Key Components
 
