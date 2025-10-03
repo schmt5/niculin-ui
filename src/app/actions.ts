@@ -1,13 +1,21 @@
 "use server";
 
 import { generateText } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI } from "@ai-sdk/openai";
 import { Message } from "./types";
 import { dummyResponse } from "./utils/parseApiResponse";
 import { sleep } from "./utils/sleep";
 
 export async function continueConversation(history: Message[]) {
   "use server";
+
+  const niculinOpenAI = createOpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+    baseURL: "https://api.openai.com/v1",
+    headers: {
+      "X-Custom-Header": "value", // example for custom header
+    },
+  });
 
   // TODO: Remove this dummy data later
   const lastMessage = history[history.length - 1];
@@ -28,7 +36,7 @@ export async function continueConversation(history: Message[]) {
 
   try {
     const { text } = await generateText({
-      model: openai("gpt-3.5-turbo"),
+      model: niculinOpenAI("gpt-3.5-turbo"),
       system: "You are a friendly assistant!",
       messages: history,
     });
