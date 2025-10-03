@@ -8,14 +8,13 @@ import { LoadingAvatar } from "./LoadingAvatar";
 import { useConversation } from "../hooks/useConversation";
 import { useInitSession } from "../hooks/useInitSession";
 import { getDateTime } from "../utils/getDateTime";
+import { useSearchParams } from "next/navigation";
+import { useLanguageCode } from "../hooks/useLanguageCode";
 
 export function Chat() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const version = urlParams.get("version")
-    ? `Version: ${urlParams.get("version")}`
-    : "";
-
-  const now = getDateTime();
+  const searchParams = useSearchParams();
+  const version = searchParams?.get("version") || "v1";
+  const languageCode = useLanguageCode();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState("");
@@ -71,7 +70,8 @@ export function Chat() {
       <div className="w-full flex-1 overflow-y-auto">
         <div className="flex flex-col items-center text-gray-500">
           <span className="text-sm">{version}</span>
-          <span className="text-sm">{now}</span>
+          <span className="text-sm">{languageCode}</span>
+          <span className="text-sm">{getDateTime()}</span>
         </div>
         {conversation.map((message) => (
           <MessageItem key={message.id} message={message} />
