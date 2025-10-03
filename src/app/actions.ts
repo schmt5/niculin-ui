@@ -26,22 +26,38 @@ export async function continueConversation(history: Message[]) {
     };
   }
 
-  const { text } = await generateText({
-    model: openai("gpt-3.5-turbo"),
-    system: "You are a friendly assistant!",
-    messages: history,
-  });
+  try {
+    const { text } = await generateText({
+      model: openai("gpt-3.5-turbo"),
+      system: "You are a friendly assistant!",
+      messages: history,
+    });
 
-  return {
-    messages: [
-      ...history,
-      {
-        id: crypto.randomUUID(),
-        role: "assistant" as const,
-        content: text,
-      },
-    ],
-  };
+    return {
+      messages: [
+        ...history,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant" as const,
+          content: text,
+        },
+      ],
+    };
+  } catch (error) {
+    console.error(error);
+    const errorMessage = "Uups, something went wrong. Please try again later!";
+
+    return {
+      messages: [
+        ...history,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant" as const,
+          content: errorMessage,
+        },
+      ],
+    };
+  }
 }
 
 export async function initSession(data = {}) {
