@@ -7,7 +7,6 @@ import { SubmitButton } from "./SubmitButton";
 import { LoadingAvatar } from "./LoadingAvatar";
 import { useConversation } from "../hooks/useConversation";
 import { useInitSession } from "../hooks/useInitSession";
-import { parseApiResponse, dummyResponse } from "../utils/parseApiResponse";
 import { getDateTime } from "../utils/getDateTime";
 
 export function Chat() {
