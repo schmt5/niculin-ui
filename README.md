@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Niculin
+
+Niculin is a German-language AI assistant chat application built with Next.js and React. The application provides an interactive chat interface that can respond to user queries and present activity recommendations through rich option cards.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd niculin
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+Create a `.env.local` file in the root directory and add your OpenAI API key:
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+NEXT_PUBLIC_ACCENT_COLOR=015a9d  # Optional: Custom accent color
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The chat interface will appear as a contained widget. You can start chatting with Niculin immediately.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Building for Production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Basic Chat
+- Type your message and Niculin will respond with AI-generated content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Activity Recommendations
+- Ask about activities (e.g., "show activities")
+- Receive structured responses with option cards showing:
+  - Activity images
+  - Descriptions
+  - Pricing information
+  - Categories (families, mountains, water, air activities)
 
-## Deploy on Vercel
+### URL Parameters
+- `?version=X.X.X` - Display version information in the chat header
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Chat Component
+The main chat interface (`src/app/ui/Chat.tsx`) handles:
+- Message display and scrolling
+- Input handling with Enter key support
+- Loading states
+- Session management
+
+### Message Content Triage
+Intelligent parsing of AI responses (`src/app/ui/MessageContentTriage.tsx`) that can handle:
+- Plain text responses
+- JSON-embedded responses with activity options
+- HTML content rendering
+
+### Option Cards
+Rich activity recommendation cards (`src/app/ui/OptionCard.tsx`) featuring:
+- Lazy-loaded images with loading states
+- Activity details and pricing
+- Responsive design
+
+## License
+
+This project is private and not licensed for public use.
