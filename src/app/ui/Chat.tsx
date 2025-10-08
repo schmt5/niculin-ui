@@ -66,7 +66,7 @@ export function Chat() {
   }, [conversation]);
 
   return (
-    <div className="h-full flex flex-col bg-ni-50/75">
+    <div className="h-full flex flex-col bg-ni-50/75 rounded-2xl">
       <div className="w-full flex-1 overflow-y-auto">
         <div className="flex flex-col items-center text-gray-500">
           <span className="text-sm">{version}</span>

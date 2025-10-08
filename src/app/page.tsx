@@ -19,7 +19,7 @@ export default function App() {
   }
 
   return (
-    <div className="hidden xs:block w-full h-[480px] max-w-xl mx-auto relative border border-stone-300">
+    <div className="hidden xs:block w-full h-[480px] max-w-xl mx-auto relative border border-stone-300 rounded-xs">
       <Chat />
     </div>
   );
