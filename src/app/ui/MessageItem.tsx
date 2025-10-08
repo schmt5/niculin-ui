@@ -10,7 +10,7 @@ interface MessageItemProps {
 function MessageItemComponent({ message }: MessageItemProps) {
   if (message.role === "user") {
     return (
-      <div className="bg-ni-200 border border-stone-300 p-2 rounded-md mx-4 my-4">
+      <div className="bg-ni-200 border border-stone-300 p-2 rounded-md max-w-md ml-auto mr-4 my-4">
         {message.content}
       </div>
     );
