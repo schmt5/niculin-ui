@@ -1,17 +1,18 @@
 import { memo } from "react";
 
 interface SubmitButtonProps {
-  loading: boolean;
+  loading?: boolean;
+  disabled?: boolean;
 }
 
-function SubmitButtonComponent({ loading }: SubmitButtonProps) {
+function SubmitButtonComponent({ loading, disabled }: SubmitButtonProps) {
   let icon;
   if (loading) {
     icon = (
       <svg
         height="16"
         width="16"
-        className="animate-spin h-4 w-4 text-white"
+        className="animate-spin size-5"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -34,18 +35,12 @@ function SubmitButtonComponent({ loading }: SubmitButtonProps) {
   } else {
     icon = (
       <svg
-        height="16"
-        strokeLinejoin="round"
-        viewBox="0 0 16 16"
-        width="16"
-        className="w-4 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="size-5"
       >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M8.70711 1.39644C8.31659 1.00592 7.68342 1.00592 7.2929 1.39644L2.21968 6.46966L1.68935 6.99999L2.75001 8.06065L3.28034 7.53032L7.25001 3.56065V14.25V15H8.75001V14.25V3.56065L12.7197 7.53032L13.25 8.06065L14.3107 6.99999L13.7803 6.46966L8.70711 1.39644Z"
-          fill="currentColor"
-        ></path>
+        <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
       </svg>
     );
   }
@@ -53,9 +48,8 @@ function SubmitButtonComponent({ loading }: SubmitButtonProps) {
   return (
     <button
       type="submit"
-      disabled={loading}
-      className="inline-flex items-center justify-center whitespace-nowrap font-medium disabled:pointer-events-none disabled:opacity-50 rounded-full p-[7px] h-fit absolute bottom-1/2 translate-y-1/2 right-2 text-white"
-      style={{ backgroundColor: "var(--accent)" }}
+      disabled={disabled}
+      className="cursor-pointer disabled:cursor-not-allowed text-gray-700 disabled:text-gray-500 inline-flex items-center justify-center whitespace-nowrap font-medium disabled:pointer-events-none disabled:opacity-50 rounded-full p-[7px] h-fit absolute bottom-1/2 translate-y-1/2 right-2"
     >
       <span className="sr-only">Nachricht senden</span>
       {icon}

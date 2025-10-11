@@ -5,9 +5,10 @@ import { getRandomIndex, getRandomNumber } from "../utils/getRandomNumber";
 
 interface LoadingAvatarProps {
   onMount: () => void;
+  lastMessage: string;
 }
 
-function LoadingAvatarComponent({ onMount }: LoadingAvatarProps) {
+function LoadingAvatarComponent({ onMount, lastMessage }: LoadingAvatarProps) {
   const spinnerMessages = useMemo(
     () => [
       "🧠 Searching for best topic...",
@@ -46,9 +47,14 @@ function LoadingAvatarComponent({ onMount }: LoadingAvatarProps) {
   }, [currentMessage, spinnerMessages]);
 
   return (
-    <div className="flex gap-2 items-baseline m-6">
-      <Avatar />
-      <span className="text-stone-500">{currentMessage}</span>
+    <div>
+      <div className="bg-ni-200 border border-stone-300 p-2 rounded-md max-w-md ml-auto mr-4 my-4">
+        {lastMessage}
+      </div>
+      <div className="flex gap-2 items-baseline m-6">
+        <Avatar />
+        <span className="text-stone-500">{currentMessage}</span>
+      </div>
     </div>
   );
 }
