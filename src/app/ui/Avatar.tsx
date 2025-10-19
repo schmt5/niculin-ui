@@ -11,7 +11,7 @@ function AvatarComponent() {
         width={48}
         src={customAvatarSrc}
         alt="AI Avatar"
-        className="rounded-md shadow-md h-12 w-12 object-cover"
+        className="rounded-full shadow-md h-12 w-12 object-cover"
       />
     );
   }
@@ -22,7 +22,7 @@ function AvatarComponent() {
       width={48}
       src={"/ai-icon.jpg"}
       alt="AI Avatar"
-      className="rounded-md shadow-md h-12 w-12 object-cover"
+      className="rounded-full shadow-md h-12 w-12 object-cover"
     />
   );
 }

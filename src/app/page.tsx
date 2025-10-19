@@ -19,7 +19,7 @@ export default function App() {
   }
 
   return (
-    <div className="ni-app hidden xs:block w-full h-[580px] mx-auto relative border border-stone-300 rounded-xs">
+    <div className="ni-app hidden xs:block w-full h-[580px] mx-auto relative rounded-xs">
       <Chat />
     </div>
   );

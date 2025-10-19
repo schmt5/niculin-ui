@@ -105,7 +105,7 @@ export function Chat() {
             <SubmitButton loading={loading} disabled={input.length === 0} />
           </form>
         </div>
-        <div className="border-t border-gray-200 mt-4 px-6 py-4 flex items-center justify-between">
+        <div className="mt-4 px-6 py-4 flex items-center justify-between">
           <span className="text-sm text-gray-400 font-semibold">
             Niculin kann Fehler machen
           </span>
